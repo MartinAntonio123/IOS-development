@@ -10,15 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var settingsButton: UIButton!
+    @IBAction func changeToSettings(_ sender: Any) {
+        performSegue( withIdentifier: "Cambio1", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-    @IBAction func settingsButton(_ sender: Any) {
-        performSegue(withIdentifier: "vinculo1", sender: self)
-    }
-    
 }
 
