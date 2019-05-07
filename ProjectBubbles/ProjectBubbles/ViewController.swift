@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
     @IBAction func changeToSettings(_ sender: Any) {
         performSegue( withIdentifier: "Cambio1", sender: self)
     }
