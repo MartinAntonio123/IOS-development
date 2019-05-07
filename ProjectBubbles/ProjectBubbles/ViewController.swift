@@ -13,9 +13,16 @@ class ViewController: UIViewController {
     @IBAction func changeToSettings(_ sender: Any) {
         performSegue( withIdentifier: "Cambio1", sender: self)
     }
+    @IBAction func changeToScore(_ sender: Any) {
+        performSegue( withIdentifier: "Cambio2", sender: self)
+    }
+    @IBAction func changeToPlay(_ sender: Any) {
+        performSegue( withIdentifier: "Cambio3", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 }
+
 

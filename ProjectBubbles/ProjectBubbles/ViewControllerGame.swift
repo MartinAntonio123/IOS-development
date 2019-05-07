@@ -1,5 +1,5 @@
 //
-//  ViewControllerScore.swift
+//  ViewControllerGame.swift
 //  ProjectBubbles
 //
 //  Created by Martin Antonio Vivanco Palacios on 7/5/19.
@@ -8,11 +8,8 @@
 
 import UIKit
 
-class ViewControllerScore: UIViewController {
+class ViewControllerGame: UIViewController {
 
-    @IBAction func returnHome(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

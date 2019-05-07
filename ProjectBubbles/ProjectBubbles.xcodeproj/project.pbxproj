@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B7F8D412281457B00BB5CB4 /* ViewControllerScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7F8D402281457B00BB5CB4 /* ViewControllerScore.swift */; };
+		9B7F8D4322814C4B00BB5CB4 /* ViewControllerGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7F8D4222814C4B00BB5CB4 /* ViewControllerGame.swift */; };
 		9E711C8022801BE30098AB63 /* ViewControllerSett.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E711C7F22801BE30098AB63 /* ViewControllerSett.swift */; };
 		9E723C85227EA7F4009585E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E723C84227EA7F4009585E3 /* AppDelegate.swift */; };
 		9E723C87227EA7F4009585E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E723C86227EA7F4009585E3 /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B7F8D402281457B00BB5CB4 /* ViewControllerScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerScore.swift; sourceTree = "<group>"; };
+		9B7F8D4222814C4B00BB5CB4 /* ViewControllerGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerGame.swift; sourceTree = "<group>"; };
 		9E711C7F22801BE30098AB63 /* ViewControllerSett.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSett.swift; sourceTree = "<group>"; };
 		9E723C81227EA7F4009585E3 /* ProjectBubbles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectBubbles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E723C84227EA7F4009585E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				9E723C8D227EA7F6009585E3 /* LaunchScreen.storyboard */,
 				9E723C90227EA7F6009585E3 /* Info.plist */,
 				9E711C7F22801BE30098AB63 /* ViewControllerSett.swift */,
+				9B7F8D402281457B00BB5CB4 /* ViewControllerScore.swift */,
+				9B7F8D4222814C4B00BB5CB4 /* ViewControllerGame.swift */,
 			);
 			path = ProjectBubbles;
 			sourceTree = "<group>";
@@ -138,9 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B7F8D4322814C4B00BB5CB4 /* ViewControllerGame.swift in Sources */,
 				9E723C87227EA7F4009585E3 /* ViewController.swift in Sources */,
 				9E723C85227EA7F4009585E3 /* AppDelegate.swift in Sources */,
 				9E711C8022801BE30098AB63 /* ViewControllerSett.swift in Sources */,
+				9B7F8D412281457B00BB5CB4 /* ViewControllerScore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

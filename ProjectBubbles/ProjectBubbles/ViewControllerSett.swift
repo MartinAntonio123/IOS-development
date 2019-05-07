@@ -10,6 +10,10 @@ import UIKit
 
 class ViewControllerSett: UIViewController {
 
+    @IBOutlet weak var TimeLabel: UILabel!
+    @IBOutlet weak var BubblesLabel: UILabel!
+    @IBOutlet weak var timeSlider: UISlider!
+    @IBOutlet weak var bubbleSlider: UISlider!
     @IBAction func funBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -19,7 +23,12 @@ class ViewControllerSett: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
+    @IBAction func timeSliderMove(_ sender: Any) {
+        TimeLabel.text = "Time: \(Int(timeSlider.value))"
+    }
+    @IBAction func bubbleSliderMove(_ sender: Any) {
+        BubblesLabel.text = "No. of bubbles: \(Int(bubbleSlider.value))"
+    }
     /*
     // MARK: - Navigation
 

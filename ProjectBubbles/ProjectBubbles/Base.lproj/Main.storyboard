@@ -23,6 +23,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="changeToPlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ugg-OT-C3x"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2mc-JO-Tm5">
                                 <rect key="frame" x="125" y="156" width="125" height="30"/>
@@ -45,6 +48,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Score"/>
+                                <connections>
+                                    <action selector="changeToScore:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ao3-QA-Jhr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.78012471049999998" green="0.78501072299999997" blue="0.79239849829999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -52,6 +58,8 @@
                     </view>
                     <connections>
                         <segue destination="GBg-01-pHL" kind="presentation" identifier="Cambio1" id="lXp-Ac-kPW"/>
+                        <segue destination="tJl-2n-SHS" kind="presentation" identifier="Cambio2" id="paX-Vn-Z4I"/>
+                        <segue destination="aDY-fT-oOJ" kind="presentation" identifier="Cambio3" id="acf-Zc-LHP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -83,10 +91,16 @@
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="0.0" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="4rV-hT-ShO">
                                 <rect key="frame" x="129" y="198" width="118" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="timeSliderMove:" destination="GBg-01-pHL" eventType="valueChanged" id="ciO-lj-auk"/>
+                                </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="f9S-Xp-0gl">
                                 <rect key="frame" x="129" y="364" width="118" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="bubbleSliderMove:" destination="GBg-01-pHL" eventType="valueChanged" id="c5x-i0-vsN"/>
+                                </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4l-Lz-Cqu">
                                 <rect key="frame" x="167" y="473" width="44" height="36"/>
@@ -101,6 +115,12 @@
                         <color key="backgroundColor" red="0.78012471049999998" green="0.78501072299999997" blue="0.79239849829999998" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="Zuc-Ll-rXb"/>
                     </view>
+                    <connections>
+                        <outlet property="BubblesLabel" destination="BYT-BX-q9v" id="Vyu-Bk-jGv"/>
+                        <outlet property="TimeLabel" destination="Fx1-Pc-pt8" id="cLU-47-hO8"/>
+                        <outlet property="bubbleSlider" destination="f9S-Xp-0gl" id="qpQ-Rf-yBJ"/>
+                        <outlet property="timeSlider" destination="4rV-hT-ShO" id="4e0-WQ-gwy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wz3-xM-1J1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -109,7 +129,7 @@
         <!--Scores-->
         <scene sceneID="mlb-0P-Wlf">
             <objects>
-                <viewController title="Scores" id="tJl-2n-SHS" sceneMemberID="viewController">
+                <viewController title="Scores" id="tJl-2n-SHS" customClass="ViewControllerScore" customModule="ProjectBubbles" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jPF-aS-VRc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -135,6 +155,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3R-O0-O6B">
+                                <rect key="frame" x="165" y="476" width="44" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="funBack:" destination="GBg-01-pHL" eventType="touchUpInside" id="ODQ-9a-39P"/>
+                                    <action selector="returnHome:" destination="tJl-2n-SHS" eventType="touchUpInside" id="X2B-cZ-iCD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.78012471049999998" green="0.78501072299999997" blue="0.79239849829999998" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="SKy-2t-Lae"/>
@@ -142,7 +172,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oHI-yL-mLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="900" y="585"/>
+            <point key="canvasLocation" x="900" y="529"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="VCj-ZJ-SEC">
+            <objects>
+                <viewController id="aDY-fT-oOJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YWQ-hI-Mfv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCA-2t-Zcs">
+                                <rect key="frame" x="16" y="35" width="86" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5j-fG-j60">
+                                <rect key="frame" x="268" y="35" width="50" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.88437133215962438" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="F4q-Qt-zxa"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eUj-c6-9Xt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1593" y="140"/>
         </scene>
     </scenes>
 </document>
