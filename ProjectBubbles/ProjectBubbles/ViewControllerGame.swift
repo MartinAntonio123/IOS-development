@@ -15,35 +15,51 @@ class ViewControllerGame: UIViewController {
     @IBOutlet weak var vewGaming: UIView!
     @IBOutlet weak var labelScore: UILabel!
     @IBOutlet weak var labelTime: UILabel!
+    @IBOutlet weak var buttonStart: UIButton!
     var time:Int = 60
     var score:Int = 0
     var noBubbles: Int = 15
     var unameme: String = ""
     var bubbles: [CustomButton] = []
+    var timer = Timer()
+    
+    @objc func update()
+    {
+        time = time - 1
+        labelTime.text = "Time: \(time)"
+        delateBubbles()
+        generateBubbles()
+        if time <= 0
+        {
+            delateBubbles()
+            timer.invalidate()
+            buttonBack.isHidden = false
+            timeLabel.isHidden = false
+        }
+    }
+    func runTimer()
+    {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(update)), userInfo: nil, repeats: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         labelTime.text = "Time: \(time)"
         labelScore.text = "Score: \(score)"
         print("Vista Cargada \(noBubbles)")
+        generateBubbles()
+        runTimer()
         buttonBack.isHidden = true
         timeLabel.isHidden = true
-        var i = 0
-        self.generateBubbles()
-        while i < time {
-            UIView.animate(withDuration: 100, animations: {
-                self.delateBubbles()
-                self.generateBubbles()
-            }, completion: nil)
-            print(i)
-            i+=1
-        }
-        self.delateBubbles()
-        buttonBack.isHidden = false
-        timeLabel.isHidden = false
         // Do any additional setup after loading the view.
     }
     @IBAction func funcBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    @IBAction func buttonAction(sender: CustomButton!) {
+        print("Button tapped")
+        score = score + sender.myValue
+        labelScore.text = "Score: \(score)"
+        sender.removeFromSuperview()
     }
     class CustomButton: UIButton {
         var myValue: Int
@@ -55,15 +71,16 @@ class ViewControllerGame: UIViewController {
             //super.init()
             // set other operations after super.init, if required
             backgroundColor = .white
-            self.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+            //self.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         }
         
         required init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
-        }
+        }/*
         @objc func buttonAction(sender: UIButton!) {
             print("Button tapped")
-        }
+            updateScore(mas: self.myValue)
+        }*/
     }
     class BubbleBlack: CustomButton {
 
@@ -185,6 +202,7 @@ class ViewControllerGame: UIViewController {
             else if number <= 100{
                 bubbles.append(BubbleBlack(x:Int.random(in: 0 ... 305), y:Int.random(in: 0 ... 628)))
             }
+            bubbles[i].addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
             self.vewGaming.addSubview(bubbles[i])
             i = i + 1
         }

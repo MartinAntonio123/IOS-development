@@ -11,11 +11,13 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var tbName: UITextField!
-    var time: Int = 30
+    @IBOutlet weak var bubLabel: UILabel!
+    @IBOutlet weak var sliderTime: UISlider!
+    @IBOutlet weak var sliderBub: UISlider!
+    @IBOutlet weak var timeLabel: UILabel!
+    var time: Int = 60
     var noBubbles: Int = 15
-    @IBAction func changeToSettings(_ sender: Any) {
-        performSegue( withIdentifier: "Cambio1", sender: self)
-    }
+
     @IBAction func changeToScore(_ sender: Any) {
         performSegue( withIdentifier: "Cambio2", sender: self)
     }
@@ -29,7 +31,6 @@ class ViewController: UIViewController {
             let vc = segue.destination as? ViewControllerSett
             vc?.time = time
             vc?.noBubbules = noBubbles
-            vc?.viewMainView = self
         }
         if segue.destination is ViewControllerGame
         {
@@ -38,6 +39,14 @@ class ViewController: UIViewController {
             vc?.noBubbles = noBubbles
             vc?.unameme = tbName.text!
         }
+    }
+    @IBAction func sliderTimeMove(_ sender: Any) {
+        timeLabel.text = "Time: \(Int(sliderTime.value))"
+        time = Int(sliderTime.value)
+    }
+    @IBAction func sliderBubMove(_ sender: Any) {
+        bubLabel.text = "No. of bubbles: \(Int(sliderBub.value))"
+        noBubbles = Int(sliderBub.value)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
