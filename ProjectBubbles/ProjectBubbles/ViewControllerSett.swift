@@ -14,12 +14,18 @@ class ViewControllerSett: UIViewController {
     @IBOutlet weak var BubblesLabel: UILabel!
     @IBOutlet weak var timeSlider: UISlider!
     @IBOutlet weak var bubbleSlider: UISlider!
+    var time: Int = 0
+    var noBubbules: Int = 0
     @IBAction func funBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("tiempo = \(time) bubles = \(noBubbules)")
+        TimeLabel.text = "Time: \(time)"
+        timeSlider.value = float_t(time)
+        BubblesLabel.text = "No. of bubbles: \(noBubbules)"
+        bubbleSlider.value = float_t(noBubbules)
         // Do any additional setup after loading the view.
     }
     
