@@ -16,6 +16,7 @@ class ViewControllerSett: UIViewController {
     @IBOutlet weak var bubbleSlider: UISlider!
     var time: Int = 0
     var noBubbules: Int = 0
+    var viewMainView: ViewController?
     @IBAction func funBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -31,9 +32,11 @@ class ViewControllerSett: UIViewController {
     
     @IBAction func timeSliderMove(_ sender: Any) {
         TimeLabel.text = "Time: \(Int(timeSlider.value))"
+        viewMainView?.time = time
     }
     @IBAction func bubbleSliderMove(_ sender: Any) {
         BubblesLabel.text = "No. of bubbles: \(Int(bubbleSlider.value))"
+        viewMainView?.noBubbles = noBubbules
     }
     /*
     // MARK: - Navigation

@@ -11,8 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var tbName: UITextField!
-    var time = 30
-    var noBubbles = 15
+    var time: Int = 30
+    var noBubbles: Int = 15
     @IBAction func changeToSettings(_ sender: Any) {
         performSegue( withIdentifier: "Cambio1", sender: self)
     }
@@ -29,6 +29,7 @@ class ViewController: UIViewController {
             let vc = segue.destination as? ViewControllerSett
             vc?.time = time
             vc?.noBubbules = noBubbles
+            vc?.viewMainView = self
         }
         if segue.destination is ViewControllerGame
         {
@@ -40,6 +41,7 @@ class ViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("time \(time) no \(noBubbles)")
         // Do any additional setup after loading the view, typically from a nib.
     }
 }

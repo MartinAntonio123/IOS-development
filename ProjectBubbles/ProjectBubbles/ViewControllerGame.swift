@@ -41,7 +41,7 @@ class ViewControllerGame: UIViewController {
             super.init(frame: CGRect(x: x, y: y, width: w, height: h))
             //super.init()
             // set other operations after super.init, if required
-            backgroundColor = .white
+            backgroundColor = UIColor(white:1, alpha:0)
             self.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         }
         
@@ -153,18 +153,30 @@ class ViewControllerGame: UIViewController {
         
     }
     func play(){
-        let bub0: CustomButton = BubbleBlack(x:150, y:0)
-        let bub1: BubbleBlue = BubbleBlue(x:150, y:200)
-        let bub2: BubbleGreen = BubbleGreen(x:150, y:300)
-        let bub3: BubblePink = BubblePink(x:150, y:400)
-        let bub4: BubbleRed = BubbleRed(x:150, y:500)
-        self.vewGaming.addSubview(bub0)
-        self.vewGaming.addSubview(bub1)
-        self.vewGaming.addSubview(bub2)
-        self.vewGaming.addSubview(bub3)
-        self.vewGaming.addSubview(bub3)
-        self.vewGaming.addSubview(bub4)
-        
+        var bubbles: [CustomButton] = []
+        var i = 0
+        while i < noBubbles {
+            let number = Int.random(in: 0 ... 100)
+            if number <= 40{
+                bubbles.append(BubbleRed(x:Int.random(in: 0 ... 305), y:Int.random(in: 0 ... 628)))
+            }
+            else if number <= 70{
+                bubbles.append(BubblePink(x:Int.random(in: 0 ... 305), y:Int.random(in: 0 ... 628)))
+            }
+            else if number <= 85{
+                bubbles.append(BubbleGreen(x:Int.random(in: 0 ... 305), y:Int.random(in: 0 ... 628)))
+            }
+            else if number <= 95{
+                bubbles.append(BubbleBlue(x:Int.random(in: 0 ... 305), y:Int.random(in: 0 ... 628)))
+            }
+            else if number <= 100{
+                bubbles.append(BubbleBlack(x:Int.random(in: 0 ... 305), y:Int.random(in: 0 ... 628)))
+            }
+            self.vewGaming.addSubview(bubbles[i])
+            i = i + 1
+        }
+        // 375 x 698
+
     }
 
     /*
