@@ -28,12 +28,16 @@ class ViewControllerGame: UIViewController {
         buttonBack.isHidden = true
         timeLabel.isHidden = true
         var i = 0
+        self.generateBubbles()
         while i < time {
-            self.delateBubbles()
-            self.generateBubbles()
-            print("hola")
+            UIView.animate(withDuration: 100, animations: {
+                self.delateBubbles()
+                self.generateBubbles()
+            }, completion: nil)
+            print(i)
             i+=1
         }
+        self.delateBubbles()
         buttonBack.isHidden = false
         timeLabel.isHidden = false
         // Do any additional setup after loading the view.
@@ -162,6 +166,7 @@ class ViewControllerGame: UIViewController {
         
     }
     func generateBubbles(){
+        //var bubbles: [CustomButton] = []
         var i = 0
         while i < noBubbles {
             let number = Int.random(in: 0 ... 100)
@@ -187,11 +192,12 @@ class ViewControllerGame: UIViewController {
     }
     func delateBubbles(){
         var i = 0
+        //self.vewGaming.remove
         while i < noBubbles {
-            bubbles[i].GCRect.x = Int.random(in: 0 ... 305)
-            bubbles[i].y = Int.random(in: 0 ... 628)
+            bubbles[i].removeFromSuperview()
             i = i + 1
         }
+        bubbles.removeAll()
     }
 
     /*
