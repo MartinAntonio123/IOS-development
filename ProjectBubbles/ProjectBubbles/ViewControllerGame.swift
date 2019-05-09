@@ -19,6 +19,7 @@ class ViewControllerGame: UIViewController {
     var score:Int = 0
     var noBubbles: Int = 15
     var unameme: String = ""
+    var bubbles: [CustomButton] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         labelTime.text = "Time: \(time)"
@@ -26,7 +27,15 @@ class ViewControllerGame: UIViewController {
         print("Vista Cargada \(noBubbles)")
         buttonBack.isHidden = true
         timeLabel.isHidden = true
-        play()
+        var i = 0
+        while i < time {
+            self.delateBubbles()
+            self.generateBubbles()
+            print("hola")
+            i+=1
+        }
+        buttonBack.isHidden = false
+        timeLabel.isHidden = false
         // Do any additional setup after loading the view.
     }
     @IBAction func funcBack(_ sender: Any) {
@@ -41,7 +50,7 @@ class ViewControllerGame: UIViewController {
             super.init(frame: CGRect(x: x, y: y, width: w, height: h))
             //super.init()
             // set other operations after super.init, if required
-            backgroundColor = UIColor(white:1, alpha:0)
+            backgroundColor = .white
             self.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         }
         
@@ -152,8 +161,7 @@ class ViewControllerGame: UIViewController {
         }
         
     }
-    func play(){
-        var bubbles: [CustomButton] = []
+    func generateBubbles(){
         var i = 0
         while i < noBubbles {
             let number = Int.random(in: 0 ... 100)
@@ -176,7 +184,14 @@ class ViewControllerGame: UIViewController {
             i = i + 1
         }
         // 375 x 698
-
+    }
+    func delateBubbles(){
+        var i = 0
+        while i < noBubbles {
+            bubbles[i].GCRect.x = Int.random(in: 0 ... 305)
+            bubbles[i].y = Int.random(in: 0 ... 628)
+            i = i + 1
+        }
     }
 
     /*
