@@ -12,12 +12,14 @@ class ViewControllerGame: UIViewController {
 
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var buttonBack: UIButton!
+    @IBOutlet weak var labelBest: UILabel!
     @IBOutlet weak var vewGaming: UIView!
     @IBOutlet weak var labelScore: UILabel!
     @IBOutlet weak var labelTime: UILabel!
     @IBOutlet weak var buttonStart: UIButton!
     var time:Int = 60
     var score:Int = 0
+    var best:Int = UserDefaults.standard.integer(forKey: "score")
     var noBubbles: Int = 15
     var unameme: String = ""
     var bubbles: [CustomButton] = []
@@ -35,6 +37,14 @@ class ViewControllerGame: UIViewController {
             timer.invalidate()
             buttonBack.isHidden = false
             timeLabel.isHidden = false
+            print(best)
+            print(score)
+            if score > best{
+                print("a huevo")
+                UserDefaults.standard.set(score, forKey: "score")
+                UserDefaults.standard.set(unameme, forKey: "name")
+            }
+            
         }
     }
     func runTimer()
@@ -45,6 +55,7 @@ class ViewControllerGame: UIViewController {
         super.viewDidLoad()
         labelTime.text = "Time: \(time)"
         labelScore.text = "Score: \(score)"
+        labelBest.text = "Best: \(best)"
         print("Vista Cargada \(noBubbles)")
         generateBubbles()
         runTimer()
@@ -89,7 +100,6 @@ class ViewControllerGame: UIViewController {
             super.init(value:10, x:x, y:y, w:30, h:30)
             //super.init()
             // set other operations after super.init, if required
-            backgroundColor = .white
             self.setImage(UIImage(named: "bubble-black"), for: .normal)
         }
         
@@ -109,7 +119,6 @@ class ViewControllerGame: UIViewController {
             super.init(value:8, x:x, y:y, w:40, h:40)
             //super.init()
             // set other operations after super.init, if required
-            backgroundColor = .white
             self.setImage(UIImage(named: "bubble-blue"), for: .normal)
         }
         
@@ -129,7 +138,6 @@ class ViewControllerGame: UIViewController {
             super.init(value:5, x:x, y:y, w:50, h:50)
             //super.init()
             // set other operations after super.init, if required
-            backgroundColor = .white
             self.setImage(UIImage(named: "bubble-green"), for: .normal)
         }
         
@@ -149,7 +157,6 @@ class ViewControllerGame: UIViewController {
             super.init(value:2, x:x, y:y, w:60, h:60)
             //super.init()
             // set other operations after super.init, if required
-            backgroundColor = .white
             self.setImage(UIImage(named: "bubble-pink"), for: .normal)
         }
         
@@ -169,7 +176,6 @@ class ViewControllerGame: UIViewController {
             super.init(value:1, x:x, y:y, w:70, h:70)
             //super.init()
             // set other operations after super.init, if required
-            backgroundColor = .white
             self.setImage(UIImage(named: "bubble-red"), for: .normal)
         }
         

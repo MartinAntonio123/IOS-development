@@ -10,12 +10,15 @@ import UIKit
 
 class ViewControllerScore: UIViewController {
 
+    @IBOutlet weak var highScore: UILabel!
     @IBAction func returnHome(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let name = UserDefaults.standard.string(forKey: "name")
+        let score = UserDefaults.standard.integer(forKey: "score")
+        highScore.text = name!+": \(score)"
         // Do any additional setup after loading the view.
     }
     

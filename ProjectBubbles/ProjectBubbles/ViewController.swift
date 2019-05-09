@@ -17,7 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     var time: Int = 60
     var noBubbles: Int = 15
-
+    var name = UserDefaults.standard.string(forKey: "name")
+    var score = UserDefaults.standard.integer(forKey: "score")
     @IBAction func changeToScore(_ sender: Any) {
         performSegue( withIdentifier: "Cambio2", sender: self)
     }
@@ -51,6 +52,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("time \(time) no \(noBubbles)")
+        if name == nil{
+            UserDefaults.standard.set(0, forKey: "score")
+            UserDefaults.standard.set("name", forKey: "name")
+            name = UserDefaults.standard.string(forKey: "name")
+            score = UserDefaults.standard.integer(forKey: "score")
+            print(name)
+            print(score)
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 }
